@@ -2,8 +2,20 @@
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Buona Vita Nutrición - Sistema de gestión de pacientes para profesionales de la nutrición" />
 		<title>Buona Vita Nutrición</title>
 		<link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 	</head>
@@ -11,134 +23,181 @@
 	<body>
 		<header>
 			<div class="container">
-				<h1 class="titulo">Buona Vita Nutrición</h1>
+				<h1 class="titulo"><i class="fas fa-heartbeat"></i> Buona Vita Nutrición</h1>
 			</div>
 		</header>
 
 		<main>
 			<section class="container">
-				<h2>Mis pacientes</h2>
-				<label for="filtrar-tabla"></label>
-				<input
-					type="text"
-					name="filtro"
-					id="filtrar-tabla"
-					placeholder="Digite el nombre del paciente" />
-				<table>
-					<thead>
-						<tr>
-							<th>Nombre</th>
-							<th>Peso(kg)</th>
-							<th>Altura(m)</th>
-							<th>Gordura Corporal(%)</th>
-							<th>IMC</th>
-						</tr>
-					</thead>
-					<tbody id="tabla-pacientes">
-						<tr class="paciente">
-							<td class="info-nombre">Pablo</td>
-							<td class="info-peso">100</td>
-							<td class="info-altura">2.00</td>
-							<td class="info-gordura">10</td>
-							<td class="info-imc">0</td>
-						</tr>
+				<h2><i class="fas fa-users"></i> Mis pacientes</h2>
+				<div class="search-container">
+					<label for="filtrar-tabla"><i class="fas fa-search"></i></label>
+					<input
+						type="text"
+						name="filtro"
+						id="filtrar-tabla"
+						placeholder="Buscar paciente por nombre..." />
+				</div>
+				<div class="table-container">
+					<table>
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Peso (kg)</th>
+								<th>Altura (m)</th>
+								<th>Gordura (%)</th>
+								<th>IMC</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody id="tabla-pacientes">
+							<tr class="paciente">
+								<td class="info-nombre">Pablo</td>
+								<td class="info-peso">100</td>
+								<td class="info-altura">2.00</td>
+								<td class="info-gordura">10</td>
+								<td class="info-imc">0</td>
+							</tr>
 
-						<tr class="paciente">
-							<td class="info-nombre">Juan</td>
-							<td class="info-peso">73</td>
-							<td class="info-altura">1.80</td>
-							<td class="info-gordura">40</td>
-							<td class="info-imc">0</td>
-						</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Juan</td>
+								<td class="info-peso">73</td>
+								<td class="info-altura">1.80</td>
+								<td class="info-gordura">40</td>
+								<td class="info-imc">0</td>
+							</tr>
 
-						<tr class="paciente">
-							<td class="info-nombre">Erica</td>
-							<td class="info-peso">54</td>
-							<td class="info-altura">1.70</td>
-							<td class="info-gordura">14</td>
-							<td class="info-imc">0</td>
-						</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Erica</td>
+								<td class="info-peso">54</td>
+								<td class="info-altura">1.70</td>
+								<td class="info-gordura">14</td>
+								<td class="info-imc">0</td>
+							</tr>
 
-						<tr class="paciente">
-							<td class="info-nombre">Diego</td>
-							<td class="info-peso">85</td>
-							<td class="info-altura">1.73</td>
-							<td class="info-gordura">24</td>
-							<td class="info-imc">0</td>
-						</tr>
-						<tr class="paciente">
-							<td class="info-nombre">Tatiana</td>
-							<td class="info-peso">46</td>
-							<td class="info-altura">1.55</td>
-							<td class="info-gordura">19</td>
-							<td class="info-imc">0</td>
-						</tr>
-						<tr class="paciente">
-							<td class="info-nombre">Pedro</td>
-							<td class="info-peso">70</td>
-							<td class="info-altura">1.68</td>
-							<td class="info-gordura">23</td>
-							<td class="info-imc">0</td>
-						</tr>
-						<tr class="paciente">
-							<td class="info-nombre">Maria</td>
-							<td class="info-peso">55</td>
-							<td class="info-altura">1.60</td>
-							<td class="info-gordura">17</td>
-							<td class="info-imc">0</td>
-						</tr>
-					</tbody>
-				</table>
+							<tr class="paciente">
+								<td class="info-nombre">Diego</td>
+								<td class="info-peso">85</td>
+								<td class="info-altura">1.73</td>
+								<td class="info-gordura">24</td>
+								<td class="info-imc">0</td>
+							</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Tatiana</td>
+								<td class="info-peso">46</td>
+								<td class="info-altura">1.55</td>
+								<td class="info-gordura">19</td>
+								<td class="info-imc">0</td>
+							</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Pedro</td>
+								<td class="info-peso">70</td>
+								<td class="info-altura">1.68</td>
+								<td class="info-gordura">23</td>
+								<td class="info-imc">0</td>
+							</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Maria</td>
+								<td class="info-peso">55</td>
+								<td class="info-altura">1.60</td>
+								<td class="info-gordura">17</td>
+								<td class="info-imc">0</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-				<span id="error-ajax" class="invisible">Error al buscar los pacientes</span>
+				<div class="message-container">
+					<span id="error-ajax" class="invisible error-message"
+						><i class="fas fa-exclamation-circle"></i> Error al buscar los
+						pacientes</span
+					>
+					<span id="success-message" class="success-message invisible"
+						><i class="fas fa-check-circle"></i> Operación exitosa</span
+					>
+				</div>
 
-				<button id="buscar-paciente" class="boton bto-principal">Buscar Pacientes</button>
+				<button id="buscar-paciente" class="boton bto-principal">
+					<i class="fas fa-cloud-download-alt"></i> Importar Pacientes
+				</button>
+			</section>
+
+			<section class="container form-container">
+				<h2 id="titulo-form"><i class="fas fa-user-plus"></i> Adicionar nuevo paciente</h2>
+				<ul id="mensajes-errores"></ul>
+
+				<form id="form-adicionar">
+					<div class="form-row">
+						<div class="grupo">
+							<label for="nombre">Nombre:</label>
+							<input
+								id="nombre"
+								name="nombre"
+								type="text"
+								placeholder="Nombre completo"
+								class="campo" />
+						</div>
+						<div class="grupo">
+							<label for="peso">Peso:</label>
+							<input
+								id="peso"
+								name="peso"
+								type="number"
+								step="0.1"
+								min="0"
+								max="1000"
+								placeholder="Peso en kg"
+								class="campo campo-medio" />
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="grupo">
+							<label for="altura">Altura:</label>
+							<input
+								id="altura"
+								name="altura"
+								type="number"
+								step="0.01"
+								min="0"
+								max="3"
+								placeholder="Altura en metros"
+								class="campo campo-medio" />
+						</div>
+						<div class="grupo">
+							<label for="gordura">% de Gordura:</label>
+							<input
+								id="gordura"
+								name="gordura"
+								type="number"
+								step="0.1"
+								min="0"
+								max="100"
+								placeholder="Porcentaje de gordura"
+								class="campo campo-medio" />
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="reset" class="boton bto-secundario">
+							<i class="fas fa-undo"></i> Limpiar
+						</button>
+						<button id="adicionar-paciente" class="boton bto-principal">
+							<i class="fas fa-plus-circle"></i> Adicionar
+						</button>
+					</div>
+				</form>
 			</section>
 		</main>
 
-		<section class="container">
-			<h2 id="titulo-form">Adicionar nuevo paciente</h2>
-			<ul id="mensajes-errores"></ul>
-
-			<form id="form-adicionar">
-				<div class="grupo">
-					<label for="nombre">Nombre:</label>
-					<input
-						id="nombre"
-						name="nombre"
-						type="text"
-						placeholder="digite el nombre del paciente"
-						class="campo" />
+		<footer>
+			<div class="container">
+				<p>&copy; 2025 Buona Vita Nutrición. Todos los derechos reservados.</p>
+				<div class="footer-links">
+					<a href="#" title="Política de privacidad"><i class="fas fa-shield-alt"></i></a>
+					<a href="#" title="Contacto"><i class="fas fa-envelope"></i></a>
+					<a href="#" title="Ayuda"><i class="fas fa-question-circle"></i></a>
 				</div>
-				<div class="grupo">
-					<label for="peso">Peso:</label>
-					<input
-						id="peso"
-						name="peso"
-						type="text"
-						placeholder="digite el peso del paciente"
-						class="campo campo-medio" />
-				</div>
-				<div class="grupo">
-					<label for="altura">Altura:</label>
-					<input
-						id="altura"
-						name="altura"
-						type="text"
-						placeholder="digite la altura del paciente"
-						class="campo campo-medio" />
-				</div>
-				<div class="grupo">
-					<label for="gordura">% de Gordura:</label>
-					<input
-						id="gordura"
-						type="text"
-						placeholder="digite el porcentaje de gordura del paciente"
-						class="campo campo-medio" />
-				</div>
-				<button id="adicionar-paciente" class="boton bto-principal">Adicionar</button>
-			</form>
-		</section>
+			</div>
+		</footer>
 
 		<script src="js/calcular-imc.js"></script>
 		<script src="js/form.js"></script>
