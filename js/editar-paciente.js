@@ -347,14 +347,14 @@ function ejecutarEliminacion() {
 	// Obtener el nombre del paciente para el mensaje
 	const nombrePaciente = pacienteAEliminar.querySelector('.info-nombre').textContent;
 
-	// Añadir efecto visual de desvanecer
-	pacienteAEliminar.classList.add('fadeOut');
-
 	// Guardar referencia local a pacienteAEliminar antes de cerrarlo
 	const pacienteParaEliminar = pacienteAEliminar;
 
 	// Cerrar el modal de confirmación
 	cerrarModalConfirmacion();
+
+	// Aplicar la animación mejorada
+	pacienteParaEliminar.classList.add('paciente-eliminado');
 
 	// Eliminar después de completar la animación
 	setTimeout(function () {
