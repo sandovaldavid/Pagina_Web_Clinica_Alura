@@ -10,17 +10,39 @@ const STORAGE_KEY = 'buonavita_pacientes';
 // Function to save all patients in localStorage
 function guardarPacientesLocal() {
 	const tabla = document.querySelector('#tabla-pacientes');
+	if (!tabla) {
+		console.error('Error: No se encontró la tabla de pacientes');
+		return 0;
+	}
+
 	const pacientes = tabla.querySelectorAll('.paciente');
+
+	// Si no hay pacientes, vaciar localStorage y terminar
+	if (pacientes.length === 0) {
+		localStorage.removeItem(STORAGE_KEY);
+		return 0;
+	}
 
 	const pacientesData = [];
 
 	// To search each patient in the table and get their data
 	pacientes.forEach((paciente) => {
+		// Verificar que la fila tenga todos los datos necesarios
+		const nombreElement = paciente.querySelector('.info-nombre');
+		const pesoElement = paciente.querySelector('.info-peso');
+		const alturaElement = paciente.querySelector('.info-altura');
+		const gorduraElement = paciente.querySelector('.info-gordura');
+
+		if (!nombreElement || !pesoElement || !alturaElement || !gorduraElement) {
+			console.warn('Fila de paciente con estructura incompleta', paciente);
+			return; // continuar con el siguiente
+		}
+
 		const pacienteData = {
-			nombre: paciente.querySelector('.info-nombre').textContent,
-			peso: paciente.querySelector('.info-peso').textContent,
-			altura: paciente.querySelector('.info-altura').textContent,
-			gordura: paciente.querySelector('.info-gordura').textContent,
+			nombre: nombreElement.textContent,
+			peso: pesoElement.textContent,
+			altura: alturaElement.textContent,
+			gordura: gorduraElement.textContent,
 		};
 		pacientesData.push(pacienteData);
 	});
@@ -38,14 +60,21 @@ function guardarPacientesLocal() {
 function cargarPacientesLocal() {
 	// Check if there are saved data
 	if (!localStorage.getItem(STORAGE_KEY)) {
-		console.log('No hay datos guardados en localStorage');
 		return 0;
 	}
 
 	try {
 		// Parse the data from localStorage
 		const pacientesData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+		if (!pacientesData || !Array.isArray(pacientesData) || pacientesData.length === 0) {
+			return 0;
+		}
+
 		const tabla = document.querySelector('#tabla-pacientes');
+		if (!tabla) {
+			console.error('Error: No se encontró la tabla de pacientes para cargar datos');
+			return 0;
+		}
 
 		// Clear the table before loading new data
 		tabla.innerHTML = '';
@@ -53,11 +82,8 @@ function cargarPacientesLocal() {
 		// Load each patient into the table
 		let contador = 0;
 		pacientesData.forEach((pacienteData) => {
-			// Check if the patient already exists in the table
-			if (!pacienteExiste(pacienteData.nombre)) {
-				adicionarPacienteEnLaTabla(pacienteData);
-				contador++;
-			}
+			adicionarPacienteEnLaTabla(pacienteData);
+			contador++;
 		});
 
 		// Show success message if patients were loaded
