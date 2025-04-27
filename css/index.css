@@ -316,6 +316,33 @@ button:disabled {
 	transition: all 0.5s ease;
 }
 
+/* Animación para eliminar pacientes */
+.paciente-eliminado {
+	animation: eliminarPaciente 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+	pointer-events: none; /* * Evitar interacciones durante la animación */
+}
+
+@keyframes eliminarPaciente {
+	0% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+		background-color: rgba(231, 76, 60, 0.05);
+	}
+	20% {
+		opacity: 0.9;
+		transform: translateY(-5px) scale(0.98);
+		background-color: rgba(231, 76, 60, 0.1);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(10px) scale(0.95);
+		background-color: rgba(231, 76, 60, 0.2);
+		max-height: 0;
+		padding: 0;
+		margin: 0;
+	}
+}
+
 .invisible {
 	display: none;
 }
