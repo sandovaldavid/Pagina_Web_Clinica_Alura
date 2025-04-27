@@ -295,6 +295,7 @@ function mostrarErroresEdicion(errores) {
 
 // Función para mostrar el modal de confirmación de eliminación
 function mostrarModalConfirmacion(fila) {
+	// Asignar la fila a la variable global pacienteAEliminar
 	pacienteAEliminar = fila;
 	const nombrePaciente = pacienteAEliminar.querySelector('.info-nombre').textContent;
 
@@ -305,6 +306,13 @@ function mostrarModalConfirmacion(fila) {
 
 	// Configurar el botón de confirmar
 	const btnConfirmar = document.querySelector('#confirmar-eliminacion');
+
+	// Eliminar cualquier event listener anterior para evitar múltiples llamadas
+	if (btnConfirmar.onclick) {
+		btnConfirmar.onclick = null;
+	}
+
+	// Asignar nuevo event listener
 	btnConfirmar.onclick = function () {
 		ejecutarEliminacion();
 	};
@@ -331,7 +339,10 @@ function cerrarModalConfirmacion() {
 
 // Función para ejecutar la eliminación del paciente
 function ejecutarEliminacion() {
-	if (!pacienteAEliminar) return;
+	if (!pacienteAEliminar) {
+		console.error('Error: No hay paciente seleccionado para eliminar');
+		return;
+	}
 
 	// Obtener el nombre del paciente para el mensaje
 	const nombrePaciente = pacienteAEliminar.querySelector('.info-nombre').textContent;
@@ -339,19 +350,28 @@ function ejecutarEliminacion() {
 	// Añadir efecto visual de desvanecer
 	pacienteAEliminar.classList.add('fadeOut');
 
+	// Guardar referencia local a pacienteAEliminar antes de cerrarlo
+	const pacienteParaEliminar = pacienteAEliminar;
+
 	// Cerrar el modal de confirmación
 	cerrarModalConfirmacion();
 
 	// Eliminar después de completar la animación
 	setTimeout(function () {
-		pacienteAEliminar.remove();
-		pacienteAEliminar = null;
+		// Verificar que el paciente todavía existe en el DOM
+		if (pacienteParaEliminar && pacienteParaEliminar.parentNode) {
+			pacienteParaEliminar.remove();
 
-		// Actualizar almacenamiento local
-		guardarPacientesLocal();
+			// Actualizar almacenamiento local
+			guardarPacientesLocal();
 
-		// Mostrar mensaje de confirmación
-		mostrarMensajeExito(`Paciente ${nombrePaciente} eliminado correctamente`);
+			// Mostrar mensaje de confirmación
+			mostrarMensajeExito(`Paciente ${nombrePaciente} eliminado correctamente`);
+		} else {
+			console.error(
+				'Error: El paciente ya no existe en el DOM o fue eliminado por otro método'
+			);
+		}
 	}, 500);
 }
 
