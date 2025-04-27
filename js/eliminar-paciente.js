@@ -12,8 +12,8 @@ tabla.addEventListener('dblclick', function (event) {
 		var fila = event.target.parentNode;
 		var nombrePaciente = fila.querySelector('.info-nombre').textContent;
 
-		// Añadir efecto visual de desvanecer
-		fila.classList.add('fadeOut');
+		// Add class to the row for animation
+		fila.classList.add('paciente-eliminado');
 
 		// Eliminar después de completar la animación
 		setTimeout(function () {
