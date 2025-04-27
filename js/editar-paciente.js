@@ -233,18 +233,22 @@ function guardarCambiosPaciente() {
 	// Validar que tengamos un paciente en edición
 	if (!pacienteEnEdicion) return;
 
-	// Obtener los valores del formulario
-	const nombre = document.querySelector('#editar-nombre').value;
-	const peso = document.querySelector('#editar-peso').value;
-	const altura = document.querySelector('#editar-altura').value;
-	const gordura = document.querySelector('#editar-gordura').value;
+	// Obtener los valores actuales del paciente (antes de la edición)
+	const pesoActual = pacienteEnEdicion.querySelector('.info-peso').textContent;
+	const alturaActual = pacienteEnEdicion.querySelector('.info-altura').textContent;
+
+	// Obtener los valores del formulario (nuevos valores)
+	const nombreNuevo = document.querySelector('#editar-nombre').value;
+	const pesoNuevo = document.querySelector('#editar-peso').value;
+	const alturaNuevo = document.querySelector('#editar-altura').value;
+	const gorduraNuevo = document.querySelector('#editar-gordura').value;
 
 	// Crear objeto paciente para validación
 	const paciente = {
-		nombre: nombre,
-		peso: peso,
-		altura: altura,
-		gordura: gordura,
+		nombre: nombreNuevo,
+		peso: pesoNuevo,
+		altura: alturaNuevo,
+		gordura: gorduraNuevo,
 	};
 
 	// Validar los datos
@@ -257,22 +261,26 @@ function guardarCambiosPaciente() {
 	}
 
 	// Actualizar la fila con los nuevos datos
-	pacienteEnEdicion.querySelector('.info-nombre').textContent = nombre;
-	pacienteEnEdicion.querySelector('.info-peso').textContent = peso;
-	pacienteEnEdicion.querySelector('.info-altura').textContent = altura;
-	pacienteEnEdicion.querySelector('.info-gordura').textContent = gordura;
+	pacienteEnEdicion.querySelector('.info-nombre').textContent = nombreNuevo;
+	pacienteEnEdicion.querySelector('.info-peso').textContent = pesoNuevo;
+	pacienteEnEdicion.querySelector('.info-altura').textContent = alturaNuevo;
+	pacienteEnEdicion.querySelector('.info-gordura').textContent = gorduraNuevo;
 
-	// Recalcular IMC y estado
-	actualizarPaciente(pacienteEnEdicion);
+	// Verificar si cambió algún dato que afecte el IMC (peso o altura)
+	const cambioRelevante = pesoActual !== pesoNuevo || alturaActual !== alturaNuevo;
+
+	if (cambioRelevante) {
+		actualizarPaciente(pacienteEnEdicion);
+		mostrarMensajeExito('Paciente actualizado y se recalculó el IMC');
+	} else {
+		mostrarMensajeExito('Paciente actualizado correctamente');
+	}
 
 	// Guardar cambios en localStorage
 	guardarPacientesLocal();
 
 	// Cerrar modal
 	cerrarModal();
-
-	// Mostrar mensaje de éxito
-	mostrarMensajeExito('Paciente actualizado correctamente');
 
 	// Efecto visual para mostrar que se actualizó
 	pacienteEnEdicion.classList.add('paciente-actualizado');
