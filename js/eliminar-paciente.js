@@ -14,6 +14,9 @@ tabla.addEventListener('dblclick', function (event) {
 		setTimeout(function () {
 			fila.remove();
 
+			// Update local storage after deletion
+			guardarPacientesLocal();
+
 			// Mostrar mensaje de confirmación
 			mostrarMensajeExito(`Paciente ${nombrePaciente} eliminado correctamente`);
 		}, 500);
