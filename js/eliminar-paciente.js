@@ -1,32 +1,45 @@
+var pacientes = document.querySelectorAll('.paciente');
 
-var pacientes = document.querySelectorAll(".paciente");
+var tabla = document.querySelector('#tabla-pacientes');
+tabla.addEventListener('dblclick', function (event) {
+	// Verificar que se hizo clic en un TD dentro de una fila de paciente
+	if (event.target.tagName === 'TD') {
+		var fila = event.target.parentNode;
+		var nombrePaciente = fila.querySelector('.info-nombre').textContent;
 
-var tabla = document.querySelector("#tabla-pacientes");
-tabla.addEventListener("dblclick",function(event){//this.  ---> es el dueño del evento 
-    event.target.parentNode.classList.add("fadeOut");
-    setTimeout(function(){
-        event.target.parentNode.remove(); 
-    },500);
-    //event.target.parentNode.remove();      //  es donde se ejecuto el evento 
-    // parentNode ---> subir una gerarquia, lo que quiere decir que ya no te elimina el td, ahora te eliminara el tr
+		// Añadir efecto visual de desvanecer
+		fila.classList.add('fadeOut');
 
+		// Eliminar después de completar la animación
+		setTimeout(function () {
+			fila.remove();
+
+			// Update local storage after deletion
+			guardarPacientesLocal();
+
+			// Mostrar mensaje de confirmación
+			mostrarMensajeExito(`Paciente ${nombrePaciente} eliminado correctamente`);
+		}, 500);
+	}
 });
 
-/*
-pacientes.forEach(function(paciente){
-    paciente.addEventListener("dblclick", function(){
-        this.remove();
-    })
+// Añadir tooltip informativo a las filas de pacientes
+function mostrarTooltipEliminacion() {
+	var filasPacientes = document.querySelectorAll('.paciente');
+	filasPacientes.forEach(function (fila) {
+		fila.setAttribute('title', 'Doble clic para eliminar paciente');
+	});
+}
+
+// Llamar a la función cuando se carga la página
+document.addEventListener('DOMContentLoaded', function () {
+	mostrarTooltipEliminacion();
+
+	// Actualizar tooltips cuando se añaden nuevos pacientes (usando MutationObserver)
+	var tablaCuerpo = document.querySelector('#tabla-pacientes');
+	var observador = new MutationObserver(function (mutaciones) {
+		mostrarTooltipEliminacion();
+	});
+
+	observador.observe(tablaCuerpo, { childList: true });
 });
-*/
-
-/*
-var tabla = document.querySelector("#tabla-pacientes");
-
-tabla.addEventListener("dblclick",function(event){
-    event.target.parentNode.classList.add("fadeOut");
-    setTimeout(function(){
-        event.target.parentNode.remove();    
-    },500);
-}); 
-*/

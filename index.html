@@ -1,134 +1,341 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<meta charset="UTF-8">
-		<title>Buona Vita Nutrición</title>
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="css/reset.css">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Buona Vita Nutrición - Clínica de nutrición y control de peso</title>
+		<meta
+			name="description"
+			content="Sistema de gestión nutricional para cálculo de IMC y seguimiento de pacientes." />
 
+		<!-- Canonical -->
+		<link rel="canonical" href="http://clinica-alura.devprojects.tech/" />
+
+		<!-- Colores de tema -->
+		<meta name="theme-color" content="#3f9d6e" />
+		<meta name="color-scheme" content="light" />
+
+		<!-- Open Graph (Facebook, Instagram, WhatsApp, LinkedIn) -->
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:title"
+			content="Buona Vita Nutrición - Gestión de pacientes y control de peso" />
+		<meta
+			property="og:description"
+			content="Herramienta profesional para el seguimiento nutricional y cálculo de IMC de tus pacientes. Optimiza la gestión de tu consulta." />
+		<meta property="og:url" content="http://clinica-alura.devprojects.tech/" />
+		<meta
+			property="og:image"
+			content="http://clinica-alura.devprojects.tech/images/og/og-buona-vita.png" />
+		<meta property="og:site_name" content="Buona Vita Nutrición" />
+		<meta property="og:locale" content="es_ES" />
+
+		<!-- Twitter Cards (funciona también para X y Telegram) -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Buona Vita Nutrición - Control de peso e IMC" />
+		<meta
+			name="twitter:description"
+			content="Sistema profesional de gestión nutricional. Calcula IMC, registra pacientes y realiza seguimiento clínico." />
+		<meta
+			name="twitter:image"
+			content="http://clinica-alura.devprojects.tech/images/og/og-buona-vita.png" />
+		<meta name="twitter:site" content="@buonavitanutr" />
+		<meta name="twitter:creator" content="@buonavitanutr" />
+
+		<!-- Extra opcionales para LinkedIn -->
+		<meta name="author" content="Buona Vita Nutrición" />
+		<meta name="publisher" content="http://clinica-alura.devprojects.tech/" />
+
+		<!-- Favicon -->
+		<link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" sizes="180x180" href="./images/icons/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicon-16x16.png" />
+
+		<!-- Fuentes y estilos -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
 	</head>
 
 	<body>
 		<header>
 			<div class="container">
-				<h1 class="titulo">Buona Vita Nutrición</h1>
+				<h1 class="titulo"><i class="fas fa-heartbeat"></i> Buona Vita Nutrición</h1>
 			</div>
-		</header>	
-		
+		</header>
+
 		<main>
 			<section class="container">
-				<h2>Mis pacientes</h2>
-				<label for="filtrar-tabla"></label>
-				<input type="text" name="filtro" 
-				id="filtrar-tabla" placeholder="Digite el nombre del paciente">
-				<table>
-					<thead>
-						<tr>
-							<th>Nombre</th>
-							<th>Peso(kg)</th>
-							<th>Altura(m)</th>
-							<th>Gordura Corporal(%)</th>
-							<th>IMC</th>
-						</tr>
-					</thead>
-					<tbody id="tabla-pacientes">
-						<tr class="paciente">
-							<td class="info-nombre">Pablo</td>
-							<td class="info-peso">100</td>
-							<td class="info-altura">2.00</td>
-							<td class="info-gordura">10</td>
-							<td class="info-imc">0</td>
-						</tr>
+				<h2><i class="fas fa-users"></i> Mis pacientes</h2>
+				<div class="search-container">
+					<label for="filtrar-tabla"><i class="fas fa-search"></i></label>
+					<input
+						type="text"
+						name="filtro"
+						id="filtrar-tabla"
+						placeholder="Buscar paciente por nombre..." />
+				</div>
+				<div class="table-container">
+					<table>
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Peso (kg)</th>
+								<th>Altura (m)</th>
+								<th>Gordura (%)</th>
+								<th>IMC</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody id="tabla-pacientes">
+							<tr class="paciente">
+								<td class="info-nombre">Pablo</td>
+								<td class="info-peso">100</td>
+								<td class="info-altura">2.00</td>
+								<td class="info-gordura">10</td>
+								<td class="info-imc">0</td>
+							</tr>
 
-						<tr class="paciente" >
-							<td class="info-nombre">Juan</td>
-							<td class="info-peso">73</td>
-							<td class="info-altura">1.80</td>
-							<td class="info-gordura">40</td>
-							<td class="info-imc">0</td>
-						</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Juan</td>
+								<td class="info-peso">73</td>
+								<td class="info-altura">1.80</td>
+								<td class="info-gordura">40</td>
+								<td class="info-imc">0</td>
+							</tr>
 
-						<tr class="paciente" >
-							<td class="info-nombre">Erica</td>
-							<td class="info-peso">54</td>
-							<td class="info-altura">1.70</td>
-							<td class="info-gordura">14</td>
-							<td class="info-imc">0</td>
-						</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Erica</td>
+								<td class="info-peso">54</td>
+								<td class="info-altura">1.70</td>
+								<td class="info-gordura">14</td>
+								<td class="info-imc">0</td>
+							</tr>
 
-						<tr class="paciente">
-							<td class="info-nombre">Diego</td>
-							<td class="info-peso">85</td>
-							<td class="info-altura">1.73</td>
-							<td class="info-gordura">24</td>
-							<td class="info-imc">0</td>
-						</tr>
-						<tr class="paciente" >
-							<td class="info-nombre">Tatiana</td>
-							<td class="info-peso">46</td>
-							<td class="info-altura">1.55</td>
-							<td class="info-gordura">19</td>
-							<td class="info-imc">0</td>
-						</tr>
-						<tr class="paciente" >
-							<td class="info-nombre">Pedro</td>
-							<td class="info-peso">70</td>
-							<td class="info-altura">1.68</td>
-							<td class="info-gordura">23</td>
-							<td class="info-imc">0</td>
-						</tr>
-						<tr class="paciente" >
-							<td class="info-nombre">Maria</td>
-							<td class="info-peso">55</td>
-							<td class="info-altura">1.60</td>
-							<td class="info-gordura">17</td>
-							<td class="info-imc">0</td>
-						</tr>
-					</tbody>
-				</table>
-				
-				<span id="error-ajax" class="invisible">Error al buscar los pacientes</span>
+							<tr class="paciente">
+								<td class="info-nombre">Diego</td>
+								<td class="info-peso">85</td>
+								<td class="info-altura">1.73</td>
+								<td class="info-gordura">24</td>
+								<td class="info-imc">0</td>
+							</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Tatiana</td>
+								<td class="info-peso">46</td>
+								<td class="info-altura">1.55</td>
+								<td class="info-gordura">19</td>
+								<td class="info-imc">0</td>
+							</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Pedro</td>
+								<td class="info-peso">70</td>
+								<td class="info-altura">1.68</td>
+								<td class="info-gordura">23</td>
+								<td class="info-imc">0</td>
+							</tr>
+							<tr class="paciente">
+								<td class="info-nombre">Maria</td>
+								<td class="info-peso">55</td>
+								<td class="info-altura">1.60</td>
+								<td class="info-gordura">17</td>
+								<td class="info-imc">0</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-				<button id="buscar-paciente" class="boton bto-principal">
-					Buscar Pacientes
-				</button>
+				<div class="message-container">
+					<span id="error-ajax" class="invisible error-message"
+						><i class="fas fa-exclamation-circle"></i> Error al buscar los
+						pacientes</span
+					>
+					<span id="success-message" class="success-message invisible"
+						><i class="fas fa-check-circle"></i> Operación exitosa</span
+					>
+				</div>
 
+				<div class="button-container">
+					<button id="buscar-paciente" class="boton bto-principal">
+						<i class="fas fa-cloud-download-alt"></i> Importar Pacientes
+					</button>
+					<button id="limpiar-storage" class="boton bto-secundario">
+						<i class="fas fa-trash-alt"></i> Borrar datos guardados
+					</button>
+				</div>
+			</section>
+
+			<section class="container form-container">
+				<h2 id="titulo-form"><i class="fas fa-user-plus"></i> Adicionar nuevo paciente</h2>
+				<ul id="mensajes-errores"></ul>
+
+				<form id="form-adicionar">
+					<div class="form-row">
+						<div class="grupo">
+							<label for="nombre">Nombre:</label>
+							<input
+								id="nombre"
+								name="nombre"
+								type="text"
+								placeholder="Nombre completo"
+								class="campo" />
+						</div>
+						<div class="grupo">
+							<label for="peso">Peso:</label>
+							<input
+								id="peso"
+								name="peso"
+								type="number"
+								step="0.1"
+								min="0"
+								max="1000"
+								placeholder="Peso en kg"
+								class="campo campo-medio" />
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="grupo">
+							<label for="altura">Altura:</label>
+							<input
+								id="altura"
+								name="altura"
+								type="number"
+								step="0.01"
+								min="0"
+								max="3"
+								placeholder="Altura en metros"
+								class="campo campo-medio" />
+						</div>
+						<div class="grupo">
+							<label for="gordura">% de Gordura:</label>
+							<input
+								id="gordura"
+								name="gordura"
+								type="number"
+								step="0.1"
+								min="0"
+								max="100"
+								placeholder="Porcentaje de gordura"
+								class="campo campo-medio" />
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="reset" class="boton bto-secundario">
+							<i class="fas fa-undo"></i> Limpiar
+						</button>
+						<button id="adicionar-paciente" class="boton bto-principal">
+							<i class="fas fa-plus-circle"></i> Adicionar
+						</button>
+					</div>
+				</form>
 			</section>
 		</main>
 
-		<section class="container">
-			<h2 id="titulo-form">Adicionar nuevo paciente</h2>
-			<ul id="mensajes-errores"></ul>
+		<footer class="app-footer">
+			<div class="footer-content">
+				<div class="footer-info">
+					<div class="footer-logo">
+						<img
+							src="./images/icons/apple-touch-icon.png"
+							alt="Buona Vita Logo"
+							class="footer-logo-img" />
+						<h3>Buona Vita Nutrición</h3>
+					</div>
+					<p class="footer-description">
+						Sistema profesional de gestión nutricional que permite el cálculo de IMC y
+						seguimiento de pacientes en clínicas de nutrición y consultorios médicos.
+					</p>
+				</div>
 
+				<div class="footer-links">
+					<h4>Portafolio</h4>
+					<ul class="footer-links-list">
+						<li>
+							<!-- Change link and redirect to my portfolio/projects -->
+							<a
+								href="https://github.com/stars/sandovaldavid/lists/portforlio-projects"
+								class="footer-link"
+								target="_blank"
+								><i class="fab fa-github"></i>Mis Proyectos</a
+							>
+						</li>
+						<li>
+							<a
+								href="https://github.com/sandovaldavid/TD_App"
+								class="footer-link"
+								target="_blank"
+								><i class="fas fa-code"></i>Código Fuente</a
+							>
+						</li>
+						<li>
+							<a href="https://devsandoval.me/" class="footer-link" target="_blank">
+								<i class="fas fa-book"></i>Portafolio</a
+							>
+						</li>
+					</ul>
+				</div>
 
-			<form id="form-adicionar">
-				<div class="grupo">
-					<label for="nombre">Nombre:</label>
-					<input id="nombre" name="nombre" type="text" placeholder="digite el nombre del paciente" class="campo">
+				<div class="footer-social">
+					<h4>Contacto</h4>
+					<div class="social-icons">
+						<a
+							href="https://github.com/sandovaldavid"
+							class="social-icon"
+							target="_blank"
+							><i class="fab fa-github"></i
+						></a>
+						<a
+							href="https://linkedin.com/in/devsandoval"
+							class="social-icon"
+							target="_blank"
+							><i class="fab fa-linkedin-in"></i
+						></a>
+						<a
+							href="https://instagram.com/dev.sandoval"
+							class="social-icon"
+							target="_blank"
+							><i class="fab fa-instagram"></i
+						></a>
+						<a
+							href="https://facebook.com/devsandoval.web"
+							class="social-icon"
+							target="_blank"
+							><i class="fab fa-facebook-f"></i
+						></a>
+						<a
+							href="https://twitter.com/dev_sandoval"
+							class="social-icon"
+							target="_blank"
+							><i class="fab fa-twitter"></i
+						></a>
+						<a href="mailto:contact@devsandoval.me" class="social-icon" target="_blank"
+							><i class="fas fa-envelope"></i
+						></a>
+					</div>
 				</div>
-				<div class="grupo">
-					<label for="peso">Peso:</label>
-					<input id="peso" name="peso" type="text" placeholder="digite el peso del paciente" class="campo campo-medio">
-				</div>
-				<div class="grupo">
-					<label for="altura">Altura:</label>
-					<input id="altura" name="altura" type="text" placeholder="digite la altura del paciente" class="campo campo-medio">
-				</div>
-				<div class="grupo">
-					<label for="gordura">% de Gordura:</label>
-					<input id="gordura" type="text" placeholder="digite el porcentaje de gordura del paciente" class="campo campo-medio">
-				</div>
-				<button id="adicionar-paciente" class="boton bto-principal">Adicionar</button>
-			</form>
-		</section>
-		
-		<script src="js/calcular-imc.js"></script>	
-		<script src="js/form.js"></script>	
+			</div>
+
+			<div class="footer-bottom">
+				<p>
+					&copy; 2025 Buona Vita Nutrición | Sistema de gestión nutricional
+					<a href="https://devsandoval.me/">@sandovaldavid</a>
+				</p>
+			</div>
+		</footer>
+
+		<script src="js/calcular-imc.js"></script>
+		<script src="js/form.js"></script>
 		<script src="js/eliminar-paciente.js"></script>
 		<script src="js/filtrar.js"></script>
 		<script src="js/buscar_pacientes.js"></script>
-
+		<script src="js/localStorage.js"></script>
 	</body>
-
 </html>
