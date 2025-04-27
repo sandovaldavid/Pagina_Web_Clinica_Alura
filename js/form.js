@@ -20,6 +20,9 @@ botonAdicionar.addEventListener('click', function (event) {
 	var mensajesErrores = document.querySelector('#mensajes-errores');
 	mensajesErrores.innerHTML = '';
 
+	// Save data to localStorage after adding
+	guardarPacientesLocal();
+
 	// Mostrar mensaje de éxito
 	mostrarMensajeExito('Paciente añadido con éxito');
 });
