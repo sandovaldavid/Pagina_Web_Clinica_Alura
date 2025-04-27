@@ -247,6 +247,7 @@ button:disabled {
 	position: absolute;
 	left: 12px;
 	color: #999;
+	margin-bottom: 0;
 }
 
 #filtrar-tabla {
