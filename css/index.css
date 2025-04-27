@@ -220,6 +220,20 @@ button:disabled {
 	cursor: not-allowed;
 }
 
+/* Container to action buttons */
+.button-container {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin: 1rem 0;
+}
+
+@media screen and (max-width: 768px) {
+	.button-container {
+		flex-direction: column;
+	}
+}
+
 /* Search Styles */
 .search-container {
 	display: flex;
