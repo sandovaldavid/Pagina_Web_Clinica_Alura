@@ -29,6 +29,11 @@ botonBuscar.addEventListener('click', function () {
 				}
 			});
 
+			// Save the patients to localStorage
+			if (pacientesAgregados > 0) {
+				guardarPacientesLocal();
+			}
+
 			// Mostrar mensaje de éxito con el número de pacientes importados
 			var mensaje =
 				pacientesAgregados > 0
