@@ -271,13 +271,24 @@ function guardarCambiosPaciente() {
 
 	if (cambioRelevante) {
 		actualizarPaciente(pacienteEnEdicion);
-		mostrarMensajeExito('Paciente actualizado y se recalculó el IMC');
+		showUpdateNotification(
+			`Paciente ${nombreNuevo} actualizado y se recalculó el IMC`,
+			'Actualización completa'
+		);
 	} else {
-		mostrarMensajeExito('Paciente actualizado correctamente');
+		showUpdateNotification(
+			`Paciente ${nombreNuevo} actualizado correctamente`,
+			'Actualización completa'
+		);
 	}
 
 	// Guardar cambios en localStorage
-	guardarPacientesLocal();
+	try {
+		guardarPacientesLocal();
+		showSuccessNotification('Datos guardados localmente', 'Almacenamiento');
+	} catch (error) {
+		showErrorNotification('Error al guardar cambios en localStorage', 'Almacenamiento');
+	}
 
 	// Cerrar modal
 	cerrarModal();
@@ -299,6 +310,18 @@ function mostrarErroresEdicion(errores) {
 		li.textContent = error;
 		ul.appendChild(li);
 	});
+
+	// Mostrar también la notificación para errores (primer error con conteo)
+	if (errores.length > 0) {
+		const mensaje =
+			errores.length > 1
+				? `${errores[0]} (y ${errores.length - 1} ${
+						errores.length === 2 ? 'error más' : 'errores más'
+				  })`
+				: errores[0];
+
+		showErrorNotification(mensaje, 'Error de validación', 4000);
+	}
 }
 
 // Función para mostrar el modal de confirmación de eliminación
@@ -371,10 +394,18 @@ function ejecutarEliminacion() {
 			pacienteParaEliminar.remove();
 
 			// Actualizar almacenamiento local
-			guardarPacientesLocal();
+			try {
+				guardarPacientesLocal();
+				showSuccessNotification('Datos guardados localmente', 'Almacenamiento');
+			} catch (error) {
+				showErrorNotification('Error al guardar cambios en localStorage', 'Almacenamiento');
+			}
 
 			// Mostrar mensaje de confirmación
-			mostrarMensajeExito(`Paciente ${nombrePaciente} eliminado correctamente`);
+			showDeleteNotification(
+				`Paciente ${nombrePaciente} eliminado correctamente`,
+				'Eliminación completa'
+			);
 		} else {
 			console.error(
 				'Error: El paciente ya no existe en el DOM o fue eliminado por otro método'

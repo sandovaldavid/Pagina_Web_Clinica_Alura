@@ -22,8 +22,8 @@ tabla.addEventListener('dblclick', function (event) {
 			// Update local storage after deletion
 			guardarPacientesLocal();
 
-			// Mostrar mensaje de confirmación
-			mostrarMensajeExito(`Paciente ${nombrePaciente} eliminado correctamente`);
+			// Usar la nueva notificación de tipo delete
+			showDeleteNotification(`Paciente ${nombrePaciente} eliminado correctamente`);
 		}, 500);
 	}
 });

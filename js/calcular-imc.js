@@ -27,17 +27,19 @@ function actualizarPaciente(paciente) {
 	paciente.classList.remove('paciente-incorrecto');
 
 	if (!pesoEsValido) {
-		console.log('Peso incorrecto');
 		tdIMC.textContent = 'Peso incorrecto';
 		pesoEsValido = false;
 		paciente.classList.add('paciente-incorrecto');
+		// Reemplazar console.log con notificación
+		showWarningNotification('El peso debe estar entre 0 y 1000 kg', 'Dato inválido');
 	}
 
 	if (!alturaEsValida) {
-		console.log('Altura incorrecta');
 		tdIMC.textContent = 'Altura incorrecta';
 		alturaEsValida = false;
 		paciente.classList.add('paciente-incorrecto');
+		// Reemplazar console.log con notificación
+		showWarningNotification('La altura debe estar entre 0 y 3 metros', 'Dato inválido');
 	}
 
 	if (pesoEsValido && alturaEsValida) {
