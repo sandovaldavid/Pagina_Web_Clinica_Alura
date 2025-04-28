@@ -241,7 +241,7 @@ function guardarCambiosPaciente() {
 	const nombreNuevo = document.querySelector('#editar-nombre').value;
 	const pesoNuevo = document.querySelector('#editar-peso').value;
 	const alturaNuevo = document.querySelector('#editar-altura').value;
-	const gorduraNuevo = document.querySelector('#editar-gordura').value;
+	const gorduraNuevo = parseFloat(document.querySelector('#editar-gordura').value) || 0;
 
 	// Crear objeto paciente para validación
 	const paciente = {
