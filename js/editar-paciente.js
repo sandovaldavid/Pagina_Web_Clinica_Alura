@@ -406,6 +406,13 @@ function ejecutarEliminacion() {
 				`Paciente ${nombrePaciente} eliminado correctamente`,
 				'Eliminación completa'
 			);
+
+			// Disparar evento de eliminación para actualizar gráficos
+			document.dispatchEvent(
+				new CustomEvent('pacienteEliminado', {
+					detail: { nombre: nombrePaciente },
+				})
+			);
 		} else {
 			console.error(
 				'Error: El paciente ya no existe en el DOM o fue eliminado por otro método'

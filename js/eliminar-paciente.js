@@ -24,6 +24,13 @@ tabla.addEventListener('dblclick', function (event) {
 
 			// Usar la nueva notificación de tipo delete
 			showDeleteNotification(`Paciente ${nombrePaciente} eliminado correctamente`);
+
+			// Disparar evento de eliminación para actualizar gráficos
+			document.dispatchEvent(
+				new CustomEvent('pacienteEliminado', {
+					detail: { nombre: nombrePaciente },
+				})
+			);
 		}, 500);
 	}
 });
