@@ -11,7 +11,7 @@ const STORAGE_KEY = 'buonavita_pacientes';
 function guardarPacientesLocal() {
 	const tabla = document.querySelector('#tabla-pacientes');
 	if (!tabla) {
-		console.error('Error: No se encontró la tabla de pacientes');
+		showErrorNotification('No se encontró la tabla de pacientes', 'Error de almacenamiento');
 		return 0;
 	}
 
@@ -23,7 +23,7 @@ function guardarPacientesLocal() {
 		return 0;
 	}
 
-	const pacientesData = [];
+	let pacientesData = [];
 
 	// To search each patient in the table and get their data
 	pacientes.forEach((paciente) => {
@@ -34,7 +34,7 @@ function guardarPacientesLocal() {
 		const gorduraElement = paciente.querySelector('.info-gordura');
 
 		if (!nombreElement || !pesoElement || !alturaElement || !gorduraElement) {
-			console.warn('Fila de paciente con estructura incompleta', paciente);
+			showWarningNotification('Fila de paciente con estructura incompleta', 'Advertencia');
 			return; // continuar con el siguiente
 		}
 
@@ -49,9 +49,6 @@ function guardarPacientesLocal() {
 
 	// Convert the data to JSON and save it in localStorage
 	localStorage.setItem(STORAGE_KEY, JSON.stringify(pacientesData));
-
-	// Show success message
-	mostrarMensajeExito('Datos guardados localmente');
 
 	return pacientesData.length; // Return the number of patients saved
 }
@@ -72,7 +69,10 @@ function cargarPacientesLocal() {
 
 		const tabla = document.querySelector('#tabla-pacientes');
 		if (!tabla) {
-			console.error('Error: No se encontró la tabla de pacientes para cargar datos');
+			showErrorNotification(
+				'No se encontró la tabla de pacientes para cargar datos',
+				'Error de carga'
+			);
 			return 0;
 		}
 
@@ -86,14 +86,12 @@ function cargarPacientesLocal() {
 			contador++;
 		});
 
-		// Show success message if patients were loaded
-		if (contador > 0) {
-			console.log(`Se cargaron ${contador} pacientes desde almacenamiento local`);
-		}
-
 		return contador; // Return the number of patients loaded
 	} catch (error) {
-		console.error('Error al cargar datos desde localStorage:', error);
+		showErrorNotification(
+			'Error al cargar datos desde localStorage: ' + error.message,
+			'Error de carga'
+		);
 		return 0;
 	}
 }
@@ -101,7 +99,7 @@ function cargarPacientesLocal() {
 // Function to clear all data from localStorage
 function limpiarDatosLocal() {
 	localStorage.removeItem(STORAGE_KEY);
-	mostrarMensajeExito('Almacenamiento local limpiado');
+	showDeleteNotification('Almacenamiento local limpiado', 'Datos eliminados');
 }
 
 // Verify if there are data when loading the page
@@ -109,7 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	const pacientesCargados = cargarPacientesLocal();
 
 	if (pacientesCargados > 0) {
-		mostrarMensajeExito(`Se cargaron ${pacientesCargados} pacientes guardados`);
+		showInfoNotification(
+			`Se cargaron ${pacientesCargados} pacientes guardados`,
+			'Datos restaurados'
+		);
 	}
 
 	// setting up auto-save when the page loads
@@ -148,7 +149,10 @@ document.addEventListener('DOMContentLoaded', function () {
 				if (confirm('¿Deseas también limpiar la tabla de pacientes?')) {
 					const tabla = document.querySelector('#tabla-pacientes');
 					tabla.innerHTML = '';
-					mostrarMensajeExito('Se han eliminado todos los pacientes');
+					showDeleteNotification(
+						'Se han eliminado todos los pacientes',
+						'Tabla limpiada'
+					);
 				}
 			}
 		});

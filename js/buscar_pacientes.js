@@ -35,28 +35,41 @@ botonBuscar.addEventListener('click', function () {
 			// Mostrar mensaje de éxito con el número de pacientes importados
 			var mensaje =
 				pacientesAgregados > 0
-					? `Se importaron ${pacientesAgregados} pacientes correctamente`
-					: 'No hay nuevos pacientes para importar';
-			mostrarMensajeExito(mensaje);
+					? `Se importaron ${pacientesAgregados} pacientes con éxito.`
+					: 'No se encontraron nuevos pacientes para importar.';
+
+			if (pacientesAgregados > 0) {
+				showSuccessNotification(mensaje);
+			} else {
+				showAlertNotification(mensaje);
+			}
 		} else {
-			errorAjax.classList.remove('invisible');
+			showErrorNotification(
+				'Error al buscar pacientes: ' + xhr.status + ' - ' + xhr.statusText
+			);
 		}
-		// Restaurar el botón
-		restaurarBoton();
+
+		// Restaurar el botón a su estado original
+		botonBuscar.disabled = false;
+		botonBuscar.innerHTML = '<i class="fas fa-cloud-download-alt"></i> Importar Pacientes';
 	});
 
 	xhr.addEventListener('error', function () {
-		var errorAjax = document.querySelector('#error-ajax');
-		errorAjax.textContent = 'Error de conexión. Verifique su conexión a internet.';
-		errorAjax.classList.remove('invisible');
-		restaurarBoton();
+		showErrorNotification('Error de red. Compruebe su conexión a Internet.');
+
+		// Restaurar el botón a su estado original
+		botonBuscar.disabled = false;
+		botonBuscar.innerHTML = '<i class="fas fa-cloud-download-alt"></i> Importar Pacientes';
 	});
 
 	xhr.addEventListener('timeout', function () {
-		var errorAjax = document.querySelector('#error-ajax');
-		errorAjax.textContent = 'La solicitud ha tardado demasiado. Intente nuevamente.';
-		errorAjax.classList.remove('invisible');
-		restaurarBoton();
+		showAlertNotification(
+			'La solicitud ha excedido el tiempo de espera. Inténtelo de nuevo más tarde.'
+		);
+
+		// Restaurar el botón a su estado original
+		botonBuscar.disabled = false;
+		botonBuscar.innerHTML = '<i class="fas fa-cloud-download-alt"></i> Importar Pacientes';
 	});
 
 	xhr.send();

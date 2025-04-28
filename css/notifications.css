@@ -1,0 +1,210 @@
+/* Contenedor principal de notificaciones */
+.notification-container {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-width: 350px;
+	width: 100%;
+}
+
+/* Estilos base para las notificaciones */
+.notification {
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	display: flex;
+	padding: 15px;
+	position: relative;
+	transform: translateX(110%);
+	transition: transform 0.3s ease, opacity 0.3s ease;
+	opacity: 0;
+	overflow: hidden;
+	width: 100%;
+	max-width: 100%;
+}
+
+/* Notificación visible */
+.notification.show {
+	transform: translateX(0);
+	opacity: 1;
+}
+
+/* Notificación en proceso de cierre */
+.notification.hide {
+	transform: translateX(110%);
+	opacity: 0;
+}
+
+/* Contenedor del icono */
+.notification .icon {
+	flex-shrink: 0;
+	margin-right: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+}
+
+/* Contenido de la notificación */
+.notification .content {
+	flex-grow: 1;
+	padding-right: 20px;
+}
+
+/* Título de la notificación */
+.notification .title {
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: 16px;
+}
+
+/* Mensaje de la notificación */
+.notification .message {
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+/* Botón de cierre */
+.notification .close {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 20px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	color: rgba(0, 0, 0, 0.5);
+	transition: color 0.2s;
+}
+
+.notification .close:hover {
+	color: rgba(0, 0, 0, 0.8);
+}
+
+/* Barra de progreso */
+.notification .progress {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.notification .progress-bar {
+	height: 100%;
+	width: 100%;
+	transform-origin: left;
+}
+
+/* Estilos para tipos específicos de notificaciones */
+.notification.success {
+	border-left: 4px solid #28a745;
+}
+
+.notification.success .icon {
+	color: #28a745;
+}
+
+.notification.success .progress-bar {
+	background-color: #28a745;
+}
+
+.notification.error {
+	border-left: 4px solid #dc3545;
+}
+
+.notification.error .icon {
+	color: #dc3545;
+}
+
+.notification.error .progress-bar {
+	background-color: #dc3545;
+}
+
+.notification.warning {
+	border-left: 4px solid #ffc107;
+}
+
+.notification.warning .icon {
+	color: #ffc107;
+}
+
+.notification.warning .progress-bar {
+	background-color: #ffc107;
+}
+
+.notification.info {
+	border-left: 4px solid #17a2b8;
+}
+
+.notification.info .icon {
+	color: #17a2b8;
+}
+
+.notification.info .progress-bar {
+	background-color: #17a2b8;
+}
+
+/* Estilos para el tipo delete */
+.notification.delete {
+	border-left: 4px solid #e83e8c;
+}
+
+.notification.delete .icon {
+	color: #e83e8c;
+}
+
+.notification.delete .progress-bar {
+	background-color: #e83e8c;
+}
+
+/* Estilos para el tipo update */
+.notification.update {
+	border-left: 4px solid #6f42c1;
+}
+
+.notification.update .icon {
+	color: #6f42c1;
+}
+
+.notification.update .progress-bar {
+	background-color: #6f42c1;
+}
+
+/* Estilos para el tipo alert */
+.notification.alert {
+	border-left: 4px solid #fd7e14;
+}
+
+.notification.alert .icon {
+	color: #fd7e14;
+}
+
+.notification.alert .progress-bar {
+	background-color: #fd7e14;
+}
+
+/* Animación para la barra de progreso */
+@keyframes progress {
+	from {
+		transform: scaleX(1);
+	}
+	to {
+		transform: scaleX(0);
+	}
+}
+
+/* Ajustes responsive */
+@media (max-width: 480px) {
+	.notification-container {
+		top: 10px;
+		right: 10px;
+		left: 10px;
+		max-width: none;
+	}
+}

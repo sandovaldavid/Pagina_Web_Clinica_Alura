@@ -23,8 +23,8 @@ botonAdicionar.addEventListener('click', function (event) {
 	// Save data to localStorage after adding
 	guardarPacientesLocal();
 
-	// Mostrar mensaje de éxito
-	mostrarMensajeExito('Paciente añadido con éxito');
+	// Mostrar mensaje de éxito con la notificación personalizada
+	showSuccessNotification('Paciente añadido con éxito', 'Nuevo registro');
 });
 
 function adicionarPacienteEnLaTabla(paciente) {
@@ -115,6 +115,9 @@ function exhibirMensajesErrores(errores) {
 		li.textContent = error;
 		ul.appendChild(li);
 	});
+
+	// Mostrar también una notificación de error general
+	showErrorNotification('Por favor corrige los errores', 'Verificación del formulario');
 }
 
 function mostrarMensajeExito(mensaje) {

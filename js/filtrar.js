@@ -2,6 +2,7 @@ var campoFiltro = document.querySelector('#filtrar-tabla');
 
 campoFiltro.addEventListener('input', function () {
 	var pacientes = document.querySelectorAll('.paciente');
+	var pacientesVisibles = 0;
 
 	if (this.value.length > 0) {
 		for (var i = 0; i < pacientes.length; i++) {
@@ -15,7 +16,17 @@ campoFiltro.addEventListener('input', function () {
 				paciente.classList.add('invisible');
 			} else {
 				paciente.classList.remove('invisible');
+				pacientesVisibles++;
 			}
+		}
+
+		// Mostrar notificación si no se encuentran resultados
+		if (pacientesVisibles === 0 && window.showAlertNotification) {
+			showAlertNotification(
+				`No se encontraron pacientes con el término "${this.value}"`,
+				'Sin resultados',
+				3000
+			);
 		}
 	} else {
 		for (var i = 0; i < pacientes.length; i++) {
