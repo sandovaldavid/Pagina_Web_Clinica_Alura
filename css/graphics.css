@@ -212,7 +212,7 @@
 
 	.opciones-ordenacion {
 		width: 100%;
-		justify-content: flex-start;
+		justify-content: center;
 	}
 
 	.chart-container {
@@ -238,6 +238,18 @@
 	.stat-value {
 		font-size: 1.7rem;
 	}
+
+	.graficos-tabs {
+		flex-direction: row;
+	}
+
+	.tab-btn {
+		width: auto;
+	}
+
+	.orden-btn {
+		width: auto;
+	}
 }
 
 @media screen and (max-width: 576px) {
@@ -261,7 +273,6 @@
 		min-width: 100px;
 		padding: 0.8rem;
 		flex: 1 1 100%;
-		max-width: 100%;
 	}
 
 	.stat-value {
