@@ -25,21 +25,25 @@ body {
 /* Header Styles */
 header {
 	background-color: var(--primary-color);
-	height: 4em;
+	min-height: 4em;
 	color: #fff;
 	margin-bottom: 1.5em;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	padding: 0.5em 0;
+	display: flex;
+	align-items: center;
 }
 
 header h1 {
-	font-size: 2em;
+	font-size: clamp(1.2em, 4vw, 2em);
 	font-weight: 700;
 	display: inline-block;
 	vertical-align: middle;
+	word-break: break-word;
 }
 
 header h2 {
-	font-size: 1.8em;
+	font-size: clamp(1em, 3.5vw, 1.8em);
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -58,9 +62,42 @@ header .container:before {
 	margin: 0 auto;
 }
 
+@media screen and (max-width: 768px) {
+	header {
+		padding: 0.7em 0;
+	}
+
+	header h1 {
+		font-size: 1.5em;
+	}
+
+	.container {
+		width: 95%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	header {
+		padding: 0.8em 0;
+		margin-bottom: 1em;
+	}
+
+	header h1 {
+		font-size: 1.3em;
+	}
+
+	header .fa-heartbeat {
+		margin-right: 5px;
+	}
+
+	.container {
+		width: 92%;
+	}
+}
+
 /* Section Styles */
 section {
-	margin: 2em 0;
+	margin: 1.5em 0;
 	overflow: hidden;
 	background-color: #fff;
 	border-radius: 8px;
@@ -78,12 +115,41 @@ section h2 {
 	color: var(--primary-color);
 }
 
+@media screen and (max-width: 768px) {
+	section {
+		margin: 1.2em 0;
+		padding: 1.2em;
+	}
+
+	section h2 {
+		font-size: 1.6em;
+		padding-bottom: 0.4em;
+		margin-bottom: 0.6em;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	section {
+		margin: 1em 0;
+		padding: 1em;
+		border-radius: 6px;
+	}
+
+	section h2 {
+		font-size: 1.4em;
+		padding-bottom: 0.3em;
+		margin-bottom: 0.5em;
+	}
+}
+
 /* Table Styles */
 .table-container {
 	overflow-x: auto;
 	margin-bottom: 1em;
 	border-radius: 5px;
 	transition: height 0.5s ease-out;
+	-webkit-overflow-scrolling: touch; /* Improves scrolling on iOS */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 table {
@@ -94,6 +160,7 @@ table {
 	border-spacing: 0;
 	border: 1px solid var(--border-color);
 	border-radius: 5px;
+	min-width: 650px; /* Ensures horizontal scroll on small screens */
 }
 
 td,
@@ -102,6 +169,7 @@ th {
 	margin: 0;
 	border-bottom: 1px solid var(--border-color);
 	text-align: center;
+	word-break: break-word;
 }
 
 th {
@@ -120,15 +188,73 @@ tr:hover {
 	transition: all 0.3s ease;
 }
 
+/* Responsive table styles */
+@media screen and (max-width: 992px) {
+	td,
+	th {
+		padding: 0.7em 0.5em;
+		font-size: 0.95em;
+	}
+
+	table {
+		min-width: 600px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.table-container {
+		border: 1px solid var(--border-color);
+		border-radius: 8px;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		margin-top: 0.5em;
+	}
+
+	table {
+		min-width: 580px;
+	}
+
+	th {
+		font-size: 0.9em;
+		position: sticky;
+		top: 0;
+		background-color: var(--light-gray);
+		z-index: 1;
+	}
+
+	td {
+		font-size: 0.9em;
+		padding: 0.6em 0.4em;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.table-container {
+		margin-top: 0.8em;
+	}
+
+	table {
+		min-width: 550px;
+	}
+
+	th,
+	td {
+		padding: 0.5em 0.3em;
+		font-size: 0.85em;
+	}
+}
+
 /* Form Styles */
 .form-container {
 	background-color: #fff;
+	padding: 1.5em;
+	border-radius: 8px;
 }
 
 .form-row {
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 1em;
+	gap: 1rem;
 }
 
 label {
@@ -146,6 +272,7 @@ label {
 	padding: 0.8em;
 	font-size: 0.95em;
 	transition: border-color 0.3s ease;
+	-webkit-appearance: none;
 }
 
 .campo:focus {
@@ -156,7 +283,8 @@ label {
 
 .campo-medio {
 	display: inline-block;
-	padding-right: 0.5em;
+	padding-right: 0;
+	width: 100%;
 }
 
 .grupo {
@@ -169,6 +297,66 @@ label {
 	justify-content: flex-end;
 	gap: 10px;
 	margin-top: 1em;
+}
+
+/* Formulario responsivo */
+@media screen and (max-width: 992px) {
+	.form-row {
+		gap: 0.8rem;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.form-container {
+		padding: 1.2em;
+	}
+
+	.form-row {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.grupo {
+		width: 100%;
+		padding: 5px 0;
+	}
+
+	.campo-medio {
+		width: 100%;
+	}
+
+	.form-actions {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.form-actions button {
+		min-width: 45%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.form-container {
+		padding: 1em;
+	}
+
+	.form-actions {
+		flex-direction: column-reverse;
+		gap: 0.8rem;
+	}
+
+	.form-actions button {
+		width: 100%;
+	}
+
+	label {
+		font-size: 0.95em;
+	}
+
+	.campo {
+		padding: 0.7em;
+		font-size: 16px; /* Prevents iOS zoom on focus */
+	}
 }
 
 /* Button Styles */
@@ -232,6 +420,32 @@ button:disabled {
 @media screen and (max-width: 768px) {
 	.button-container {
 		flex-direction: column;
+		width: 100%;
+	}
+
+	.button-container button {
+		width: 100%;
+	}
+
+	button {
+		padding: 0.7em 1.2em;
+		font-size: 0.95em;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.button-container {
+		margin: 0.8rem 0;
+		gap: 0.8rem;
+	}
+
+	button {
+		padding: 0.7em 1em;
+		font-size: 0.9em;
+	}
+
+	.boton {
+		margin: 5px 0;
 	}
 }
 
@@ -241,6 +455,8 @@ button:disabled {
 	align-items: center;
 	margin-bottom: 1em;
 	position: relative;
+	width: 100%;
+	max-width: 400px;
 }
 
 .search-container label {
@@ -251,7 +467,7 @@ button:disabled {
 }
 
 #filtrar-tabla {
-	width: 300px;
+	width: 100%;
 	height: 40px;
 	padding-left: 35px;
 	border: 1px solid var(--border-color);
@@ -262,14 +478,31 @@ button:disabled {
 
 #filtrar-tabla:focus {
 	outline: none;
-	width: 350px;
 	border-color: var(--primary-color);
 	box-shadow: 0 0 0 2px rgba(63, 157, 110, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+	.search-container {
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.search-container {
+		margin-bottom: 0.8em;
+	}
+
+	#filtrar-tabla {
+		height: 38px;
+		font-size: 0.9em;
+	}
 }
 
 /* Message Styles */
 .message-container {
 	margin: 1em 0;
+	width: 100%;
 }
 
 #mensajes-errores {
@@ -290,6 +523,7 @@ button:disabled {
 	border-radius: 4px;
 	display: inline-block;
 	margin-top: 0.5em;
+	width: 100%;
 }
 
 .success-message {
@@ -299,6 +533,42 @@ button:disabled {
 	border-radius: 4px;
 	display: inline-block;
 	margin-top: 0.5em;
+	width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+	.message-container {
+		margin: 0.8em 0;
+	}
+
+	#mensajes-errores {
+		margin-left: 1.2em;
+		font-size: 0.95em;
+	}
+
+	.error-message,
+	.success-message {
+		padding: 0.7em;
+		font-size: 0.95em;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.message-container {
+		margin: 0.6em 0;
+	}
+
+	#mensajes-errores {
+		margin-left: 1em;
+		font-size: 0.9em;
+	}
+
+	.error-message,
+	.success-message {
+		padding: 0.6em;
+		font-size: 0.9em;
+	}
 }
 
 /* Status Indicators */
