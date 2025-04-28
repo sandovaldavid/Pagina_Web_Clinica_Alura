@@ -47,7 +47,7 @@
 
 ## 🚀 Demo
 
-> ### [Ver Demo en Vivo](https://clinica-alura.devprojects.tech)
+> ### [Ver Demo en Vivo](https://clinica-alura-demo.devsandoval.me/)
 
 <div align="center">
   <table>
