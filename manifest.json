@@ -1,0 +1,64 @@
+{
+	"name": "Buona Vita Nutrición",
+	"short_name": "BuonaVita",
+	"description": "Sistema de gestión nutricional para cálculo de IMC y seguimiento de pacientes",
+	"start_url": "index.html",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#3f9d6e",
+	"orientation": "portrait-primary",
+	"icons": [
+		{
+			"src": "images/icons/favicon-16x16.png",
+			"sizes": "16x16",
+			"type": "image/png"
+		},
+		{
+			"src": "images/icons/favicon-32x32.png",
+			"sizes": "32x32",
+			"type": "image/png"
+		},
+		{
+			"src": "images/icons/apple-touch-icon.png",
+			"sizes": "180x180",
+			"type": "image/png"
+		},
+		{
+			"src": "images/icons/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "images/icons/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "images/mockups/desktop.png",
+			"sizes": "1600x1000",
+			"type": "image/png",
+			"form_factor": "wide",
+			"label": "Pantalla principal de Buona Vita Nutrición"
+		},
+		{
+			"src": "images/mockups/mobile.png",
+			"sizes": "550x1052",
+			"type": "image/png",
+			"form_factor": "narrow",
+			"label": "Versión móvil de Buona Vita Nutrición"
+		},
+		{
+			"src": "images/mockups/tablet.png",
+			"sizes": "1043x1042",
+			"type": "image/png",
+			"form_factor": "wide",
+			"label": "Versión tablet de Buona Vita Nutrición"
+		}
+	],
+	"categories": ["health", "productivity", "medical"],
+	"lang": "es-ES",
+	"dir": "ltr"
+}

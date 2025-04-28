@@ -11,6 +11,9 @@
 		<!-- Canonical -->
 		<link rel="canonical" href="http://clinica-alura-demo.devsandoval.me/" />
 
+		<!-- Manifest.json para PWA -->
+		<link rel="manifest" href="manifest.json" />
+
 		<!-- Colores de tema -->
 		<meta name="theme-color" content="#3f9d6e" />
 		<meta name="color-scheme" content="light" />
@@ -455,5 +458,22 @@
 		<script src="js/localStorage.js"></script>
 		<script src="js/editar-paciente.js"></script>
 		<script src="js/graphics.js"></script>
+
+		<!-- Registro del Service Worker para PWA -->
+		<script>
+			// Registrar el service worker solo si es compatible con el navegador
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', function () {
+					navigator.serviceWorker
+						.register('/service-worker.js')
+						.then((registration) => {
+							console.log('Service Worker registrado con éxito:', registration.scope);
+						})
+						.catch((error) => {
+							console.error('Error al registrar el Service Worker:', error);
+						});
+				});
+			}
+		</script>
 	</body>
 </html>
