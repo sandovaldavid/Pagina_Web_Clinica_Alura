@@ -92,11 +92,11 @@
 -   🔔 Sistema avanzado de notificaciones
 -   📱 Mejoras en el diseño responsivo
 
-[Ver notas completas de la versión 2.0.0](./docs/release-v2.0.0.md)
+[Ver notas completas de la versión 2.0.0](https://github.com/sandovaldavid/Pagina_Web_Clinica_Alura/releases/tag/v2.0.0)
 
 ### 📋 Historial de versiones
 
--   [Notas de la versión 1.0.0](./docs/release-v1.0.0.md)
+-   [Notas de la versión 1.0.0](https://github.com/sandovaldavid/Pagina_Web_Clinica_Alura/releases/tag/v1.0.0)
 
 ## 🚀 Iniciando el Proyecto
 
