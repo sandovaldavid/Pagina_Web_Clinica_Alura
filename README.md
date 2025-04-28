@@ -1,103 +1,159 @@
-# 🏥 Buona Vita Nutrición - Patient Management System
+# 🏥 Buona Vita Nutrición - Sistema de Gestión Nutricional
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Estado](https://img.shields.io/badge/Estado-Producción-success)](https://clinica-alura.devprojects.tech)
+[![Versión](https://img.shields.io/badge/Versión-2.0.0-blue)](https://github.com/sandovaldavid/Pagina_Web_Clinica_Alura/releases)
 
-A web-based patient management system for nutritionists to track patient data and calculate BMI (Body Mass Index).
+<div align="center">
+  <img src="./images/og/og-buona-vita.png" alt="Buona Vita Nutrición Banner" width="700px" />
+</div>
 
-## 📋 Features
+## 📋 Descripción
 
-- Add new patients with their details
-- Calculate BMI automatically
-- Filter patients by name
-- Remove patients with double-click
-- Import patients from external API
-- Validate input data
-- Responsive design
+> **Buona Vita Nutrición** es un sistema web completo para que nutricionistas y profesionales de la
+> salud gestionen datos de pacientes, calculen el Índice de Masa Corporal (IMC) y realicen
+> seguimiento nutricional de forma eficiente y profesional.
+
+## ✨ Características Principales
+
+### 👥 Gestión de Pacientes
+
+-   ✅ **Registro completo de pacientes** con datos personales y medidas corporales
+-   🧮 **Cálculo automático de IMC** con clasificación por categorías
+-   🔍 **Búsqueda y filtrado** de pacientes en tiempo real
+-   🗑️ **Eliminación de pacientes** con confirmación y animaciones
+-   ✏️ **Edición de datos** mediante interfaz modal intuitiva
+
+### 💾 Persistencia de Datos
+
+-   📦 **Almacenamiento local** para mantener información entre sesiones
+-   ♻️ **Carga automática** de datos guardados al iniciar la aplicación
+-   🔄 **Sincronización** con cambios en tiempo real
+
+### 📊 Visualización de Datos
+
+-   📈 **Gráficos interactivos** para análisis de tendencias
+-   📉 **Estadísticas detalladas** del IMC, peso y gordura corporal
+-   🎯 **Indicadores visuales** para estados de peso y categorías de IMC
+
+### 🔔 Notificaciones y Validación
+
+-   💬 **Sistema avanzado de notificaciones** con diferentes tipos de alertas
+-   ✅ **Validación de datos en tiempo real** con feedback inmediato
+-   ⚠️ **Prevención de errores** con mensajes claros y precisos
 
 ## 🚀 Demo
 
-Visit the live demo: [Buona Vita Nutrición](https://clinica-alura.devprojects.tech)
+> ### [Ver Demo en Vivo](https://clinica-alura.devprojects.tech)
 
-## 💻 Technologies
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><strong>📱 Móvil</strong></td>
+      <td align="center"><strong>💻 Escritorio</strong></td>
+    </tr>
+    <tr>
+      <td><img src="./images/mockups/mobile.png" alt="Vista móvil" width="200"/></td>
+      <td><img src="./images/mockups/desktop.png" alt="Vista escritorio" width="400"/></td>
+    </tr>
+  </table>
+</div>
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- REST API
+## 🛠️ Tecnologías Utilizadas
 
-## 📦 Project Structure
+| Tecnología                                                                                                        | Uso                                   |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)                | Estructura semántica y accesible      |
+| ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)                   | Estilos responsivos y animaciones     |
+| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) | Lógica del cliente e interactividad   |
+| ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chart.js&logoColor=white)       | Visualizaciones gráficas interactivas |
+| ![REST API](https://img.shields.io/badge/REST_API-009688?style=for-the-badge&logo=api&logoColor=white)            | Integración con servicios externos    |
 
-``` note
-├── css/
-│   ├── index.css              # Main styles
-│   └── reset.css              # CSS reset
-├── js/
-│   ├── buscar_pacientes.js    # API integration
-│   ├── calcular-imc.js        # BMI calculations
-│   ├── eliminar-paciente.js   # Patient removal
-│   ├── filtrar.js             # Search functionality
-│   └── form.js                # Form handling
-├── index.html                 # Main page
-└── README.md
-```
+## 🚦 Requisitos del Sistema
 
-## 🛠️ Installation
+-   Navegadores modernos con soporte para ES6 y localStorage:
+    -   Chrome (última versión)
+    -   Firefox (última versión)
+    -   Safari (última versión)
+    -   Edge (última versión)
 
-1. Clone the repository:
+## 📝 Notas de Versión
+
+### 📣 Novedades en v2.0.0
+
+> ¡Gran actualización con nuevas características y mejoras significativas!
+
+-   💾 Persistencia de datos con localStorage
+-   ✏️ Capacidades de edición de pacientes
+-   📊 Visualizaciones estadísticas con Chart.js
+-   🔔 Sistema avanzado de notificaciones
+-   📱 Mejoras en el diseño responsivo
+
+[Ver notas completas de la versión 2.0.0](./docs/release-v2.0.0.md)
+
+### 📋 Historial de versiones
+
+-   [Notas de la versión 1.0.0](./docs/release-v1.0.0.md)
+
+## 🚀 Iniciando el Proyecto
+
+1. **Clonar el repositorio**
 
 ```bash
 git clone https://github.com/sandovaldavid/Pagina_Web_Clinica_Alura.git
 ```
 
-1. Open `index.html` in your browser or use a local server:
+2. **Navegar al directorio del proyecto**
 
 ```bash
-python -m http.server 8000
-# or
-php -S localhost:8000
+cd Pagina_Web_Clinica_Alura
 ```
 
-## 💡 Usage
+3. **Abrir en el navegador**
 
-| Action | Description |
-|--------|-------------|
-| Add Patient | Fill the form and click "Adicionar" |
-| Remove Patient | Double-click on patient row |
-| Search Patient | Type in the search box |
-| Import Patients | Click "Buscar Pacientes" button |
+Abrir el archivo index.html en tu navegador preferido o usar la extension de
+[LiveServer](https://marketplace.visualstudio.com/items/?itemName=ritwickdey.LiveServer) de VSCode
 
-## 🤝 Contributing
+4. **¡Listo para usar!**
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## 🤝 Contribuciones
 
-## 📄 License
+Las contribuciones son bienvenidas. Para cambios importantes:
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+1. 🍴 Haz un fork del proyecto
+2. 🔄 Crea tu rama de características (`git checkout -b feature/amazing-feature`)
+3. 📝 Haz commit de tus cambios (`git commit -m 'Add: amazing feature'`)
+4. 📤 Haz push a la rama (`git push origin feature/amazing-feature`)
+5. 🔍 Abre un Pull Request
 
-## ⚠️ Validation Rules
+## 📜 Licencia
 
-- Weight: 0-1000 kg
-- Height: 0-3.00 m
-- All fields are required
-- Data format validation
-
-## 📝 Notes
-
-The project uses:
-
-- RESTful API for patient import
-- Regular expressions for search
-- CSS animations for deletion
-- Responsive layout
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más
+detalles.
 
 ---
-<p align="center">
-Made by <a href="https://github.com/sandovaldavid">@sandovaldavid</a>
-</p>
+
+## 👨‍💻 Autor
+
+### [David Sandoval](https://devsandoval.me/)
+
+-   🌐 Portafolio: [devsandoval.me](https://devsandoval.me)
+-   💼 LinkedIn: [@devsandoval](https://linkedin.com/in/devsandoval)
+-   💻 GitHub: [@sandovaldavid](https://github.com/sandovaldavid)
+-   📧 Email: [contact@devsandoval.me](mailto:contact@devsandoval.me)
+
+---
+
+<div align="center">
+  <p>
+    <small>Desarrollado por <a href="https://devsandoval.me/">David Sandoval</a></small><br>
+  </p>
+</div>
+
+---
+
+> **Nota**: Este proyecto fue creado con fines educativos y de entretenimiento. Siéntete libre de
+> utilizarlo y modificarlo según tus necesidades.
