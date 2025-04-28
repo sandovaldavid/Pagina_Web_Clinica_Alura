@@ -65,6 +65,7 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/footer.css" />
 		<link rel="stylesheet" type="text/css" href="css/notifications.css" />
+		<link rel="stylesheet" type="text/css" href="css/graphics.css" />
 	</head>
 
 	<body>
@@ -172,6 +173,118 @@
 					<button id="limpiar-storage" class="boton bto-secundario">
 						<i class="fas fa-trash-alt"></i> Borrar datos guardados
 					</button>
+				</div>
+			</section>
+
+			<section class="container graficos-container">
+				<h2><i class="fas fa-chart-bar"></i> Estadísticas</h2>
+
+				<div class="graficos-tabs">
+					<button class="tab-btn active" data-tab="imc">IMC</button>
+					<button class="tab-btn" data-tab="peso">Peso</button>
+					<button class="tab-btn" data-tab="gordura">% Gordura</button>
+				</div>
+
+				<div class="graficos-content">
+					<div class="tab-content active" id="imc-tab">
+						<div class="grafico-opciones">
+							<h3>Índice de Masa Corporal</h3>
+							<div class="opciones-ordenacion">
+								<span class="orden-label">Ordenar por:</span>
+								<button
+									class="orden-btn orden-activo"
+									data-grafico="imc"
+									data-orden="nombre">
+									<i class="fas fa-sort-up"></i> Nombre
+								</button>
+								<button class="orden-btn" data-grafico="imc" data-orden="imc">
+									<i class="fas fa-sort"></i> IMC
+								</button>
+							</div>
+						</div>
+						<div class="chart-container">
+							<canvas id="grafico-imc"></canvas>
+						</div>
+						<div class="chart-info">
+							<div class="chart-stat">
+								<span class="stat-value" id="imc-promedio">0</span>
+								<span class="stat-label">IMC Promedio</span>
+							</div>
+							<div class="chart-stat">
+								<span class="stat-value" id="imc-maximo">0</span>
+								<span class="stat-label">IMC Máximo</span>
+							</div>
+							<div class="chart-stat">
+								<span class="stat-value" id="imc-minimo">0</span>
+								<span class="stat-label">IMC Mínimo</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-content" id="peso-tab">
+						<div class="grafico-opciones">
+							<h3>Distribución de Peso</h3>
+							<div class="opciones-ordenacion">
+								<span class="orden-label">Ordenar por:</span>
+								<button
+									class="orden-btn orden-activo"
+									data-grafico="peso"
+									data-orden="nombre">
+									<i class="fas fa-sort-up"></i> Nombre
+								</button>
+								<button class="orden-btn" data-grafico="peso" data-orden="peso">
+									<i class="fas fa-sort"></i> Peso
+								</button>
+							</div>
+						</div>
+						<div class="chart-container">
+							<canvas id="grafico-peso"></canvas>
+						</div>
+						<div class="chart-info">
+							<div class="chart-stat">
+								<span class="stat-value" id="peso-promedio">0</span>
+								<span class="stat-label">Peso Promedio</span>
+							</div>
+							<div class="chart-stat">
+								<span class="stat-value" id="peso-maximo">0</span>
+								<span class="stat-label">Peso Máximo</span>
+							</div>
+							<div class="chart-stat">
+								<span class="stat-value" id="peso-minimo">0</span>
+								<span class="stat-label">Peso Mínimo</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-content" id="gordura-tab">
+						<div class="grafico-opciones">
+							<h3>Distribución de Gordura Corporal</h3>
+							<div class="leyenda-info">
+								<i class="fas fa-info-circle"></i>
+								<span
+									>Clasificación por rangos de porcentaje de gordura
+									corporal</span
+								>
+							</div>
+						</div>
+						<div class="chart-container">
+							<canvas id="grafico-gordura"></canvas>
+						</div>
+						<div class="chart-info">
+							<div class="chart-stat">
+								<span class="stat-value" id="gordura-promedio">0</span>
+								<span class="stat-label">% Gordura Promedio</span>
+							</div>
+							<div class="chart-stat">
+								<span class="stat-value" id="gordura-maximo">0</span>
+								<span class="stat-label">% Gordura Máximo</span>
+							</div>
+							<div class="chart-stat">
+								<span class="stat-value" id="gordura-minimo">0</span>
+								<span class="stat-label">% Gordura Mínimo</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 
@@ -332,7 +445,7 @@
 				</p>
 			</div>
 		</footer>
-
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script src="js/calcular-imc.js"></script>
 		<script src="js/notifications.js"></script>
 		<script src="js/form.js"></script>
@@ -341,5 +454,6 @@
 		<script src="js/buscar_pacientes.js"></script>
 		<script src="js/localStorage.js"></script>
 		<script src="js/editar-paciente.js"></script>
+		<script src="js/graphics.js"></script>
 	</body>
 </html>
