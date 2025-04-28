@@ -58,12 +58,12 @@
 		<link
 			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
 			rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/footer.css" />
-		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/footer.css" />
 	</head>
 
 	<body>
@@ -94,6 +94,7 @@
 								<th>Gordura (%)</th>
 								<th>IMC</th>
 								<th>Estado</th>
+								<th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody id="tabla-pacientes">
@@ -189,7 +190,7 @@
 								class="campo" />
 						</div>
 						<div class="grupo">
-							<label for="peso">Peso:</label>
+							<label for="peso">Peso (Kg):</label>
 							<input
 								id="peso"
 								name="peso"
@@ -203,7 +204,7 @@
 					</div>
 					<div class="form-row">
 						<div class="grupo">
-							<label for="altura">Altura:</label>
+							<label for="altura">Altura (mts):</label>
 							<input
 								id="altura"
 								name="altura"
@@ -337,5 +338,6 @@
 		<script src="js/filtrar.js"></script>
 		<script src="js/buscar_pacientes.js"></script>
 		<script src="js/localStorage.js"></script>
+		<script src="js/editar-paciente.js"></script>
 	</body>
 </html>

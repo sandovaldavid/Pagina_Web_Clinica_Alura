@@ -83,6 +83,7 @@ section h2 {
 	overflow-x: auto;
 	margin-bottom: 1em;
 	border-radius: 5px;
+	transition: height 0.5s ease-out;
 }
 
 table {
@@ -246,6 +247,7 @@ button:disabled {
 	position: absolute;
 	left: 12px;
 	color: #999;
+	margin-bottom: 0;
 }
 
 #filtrar-tabla {
@@ -316,6 +318,52 @@ button:disabled {
 	transition: all 0.5s ease;
 }
 
+/* Animación para eliminar pacientes */
+.paciente-eliminado {
+	animation: eliminarPaciente 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+	pointer-events: none;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+@keyframes eliminarPaciente {
+	0% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+		background-color: rgba(231, 76, 60, 0.05);
+		max-height: 65px;
+		margin-top: 0;
+		margin-bottom: 0;
+		border-width: 1px;
+		padding: 0.8em;
+	}
+	20% {
+		opacity: 0.9;
+		transform: translateY(-5px) scale(0.98);
+		background-color: rgba(231, 76, 60, 0.1);
+	}
+	60% {
+		opacity: 0.4;
+		max-height: 45px;
+		margin-top: 0;
+		margin-bottom: 0;
+		border-width: 1px;
+		transform: translateY(5px) scale(0.95);
+		background-color: rgba(231, 76, 60, 0.15);
+	}
+	100% {
+		opacity: 0;
+		max-height: 0px;
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-top: 0;
+		margin-bottom: 0;
+		border-width: 0;
+		transform: translateY(10px) scale(0.95);
+		background-color: rgba(231, 76, 60, 0.2);
+	}
+}
+
 .invisible {
 	display: none;
 }
@@ -383,4 +431,184 @@ button:disabled {
 
 .obesidad {
 	color: var(--error-color);
+}
+
+/* Estilos para el modal de edición */
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	align-items: center;
+	justify-content: center;
+	overflow: auto;
+}
+
+/* Animaciones para el modal */
+.modal-contenido {
+	background-color: white;
+	border-radius: 8px;
+	max-width: 600px;
+	width: 90%;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+	animation: modalIn 0.3s ease;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-salida .modal-contenido {
+	animation: none;
+	transform: translateY(20px);
+	opacity: 0;
+}
+
+@keyframes modalIn {
+	from {
+		transform: translateY(-30px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.modal-header {
+	padding: 1rem 1.5rem;
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.modal-header h3 {
+	font-size: 1.3rem;
+	color: var(--primary-color);
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.boton-cerrar {
+	background: none;
+	border: none;
+	font-size: 1.2rem;
+	color: #999;
+	cursor: pointer;
+	padding: 5px;
+	transition: all 0.2s ease;
+}
+
+.boton-cerrar:hover {
+	color: var(--error-color);
+	transform: scale(1.1);
+}
+
+.modal-body {
+	padding: 1.5rem;
+}
+
+.modal-footer {
+	padding: 1rem 1.5rem;
+	border-top: 1px solid var(--border-color);
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.8rem;
+}
+
+#editar-mensajes-errores {
+	color: var(--error-color);
+	list-style-type: disc;
+	margin-left: 1.5em;
+	margin-top: 0.5em;
+}
+
+#editar-mensajes-errores li {
+	margin-bottom: 0.3em;
+}
+
+/* Estilos para botones de acción en tabla */
+.acciones-paciente {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+}
+
+.boton-accion {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 6px;
+	border-radius: 4px;
+	transition: all 0.2s ease;
+}
+
+.editar-btn {
+	color: var(--secondary-color);
+}
+
+.editar-btn:hover {
+	background-color: rgba(66, 135, 245, 0.1);
+	transform: scale(1.1);
+}
+
+.eliminar-btn {
+	color: var(--error-color);
+}
+
+.eliminar-btn:hover {
+	background-color: rgba(231, 76, 60, 0.1);
+	transform: scale(1.1);
+}
+
+/* Efectos de actualización */
+.paciente-actualizado {
+	animation: actualizado 1s ease;
+}
+
+@keyframes actualizado {
+	0%,
+	100% {
+		background-color: transparent;
+	}
+	50% {
+		background-color: rgba(46, 204, 113, 0.2);
+	}
+}
+
+/* Responsive para modal */
+@media screen and (max-width: 768px) {
+	.modal-contenido {
+		width: 95%;
+		margin: 10px;
+	}
+}
+
+/* Estilos específicos para el modal de confirmación */
+.modal-confirmacion {
+	max-width: 450px;
+}
+
+.mensaje-confirmacion {
+	font-size: 1.1rem;
+	text-align: center;
+	color: var(--text-color);
+	margin: 1rem 0;
+	line-height: 1.5;
+}
+
+/* Botón de eliminación */
+.bto-error {
+	background-color: var(--error-color);
+	color: white;
+}
+
+.bto-error:hover {
+	background-color: #c0392b;
+	transform: translateY(-2px);
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
