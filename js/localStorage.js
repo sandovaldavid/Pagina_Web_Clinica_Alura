@@ -23,7 +23,7 @@ function guardarPacientesLocal() {
 		return 0;
 	}
 
-	const pacientesData = [];
+	let pacientesData = [];
 
 	// To search each patient in the table and get their data
 	pacientes.forEach((paciente) => {
